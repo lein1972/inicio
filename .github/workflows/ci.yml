@@ -1,0 +1,21 @@
+name: Mi Primer Pipeline de CI
+
+on:
+  push:
+    branches: [ master ]  # Se activa cada vez que subes algo a master
+
+jobs:
+  verificar-codigo:
+    runs-on: ubuntu-latest  # GitHub nos presta un servidor con Linux
+
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v4
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Ejecutar mi prueba de JavaScript
+        run: node app.js
