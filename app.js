@@ -1,6 +1,6 @@
 console.log("Iniciando aplicación...");
 
-function saluda(nombre) {
+function saludar(nombre) {
     return `Hola, ${nombre}, bienvenido a las cápsulas de Git`;
 }
 
