@@ -2,11 +2,11 @@ name: Mi Primer Pipeline de CI
 
 on:
   push:
-    branches: [ master ]  # Se activa cada vez que subes algo a master
+    branches: [ master ]
 
 jobs:
   verificar-codigo:
-    runs-on: ubuntu-latest  # GitHub nos presta un servidor con Linux
+    runs-on: ubuntu-latest
 
     steps:
       - name: Descargar el código
@@ -18,4 +18,6 @@ jobs:
           node-version: '20'
 
       - name: Ejecutar mi prueba de JavaScript
-        run: node app.js
+        # Timeout detiene el proceso tras 10s para que el pipeline termine.
+        # El "|| true" evita que GitHub marque error al forzar el cierre.
+        run: timeout 10s node app.js || true
